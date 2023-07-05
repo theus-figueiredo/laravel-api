@@ -30,7 +30,14 @@ class UserController extends Controller
 
         $data = $request->all();
 
+        if(!$request->has('password') || !$request->get('password')) {
+            $message = new ApiMessages('É preciso informar uma senha pra o usuário');
+            return response()->json(['Error' => $message->getMessage()], 401);
+        }
+
         try {
+
+            $data['password'] = bcrypt($data['password']);
 
             $user = $this->user->create($data);
 
@@ -65,6 +72,12 @@ class UserController extends Controller
     {
 
         $data = $request->all();
+
+        if($request->has('password') && $request->get('password')) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
 
         try {
 
