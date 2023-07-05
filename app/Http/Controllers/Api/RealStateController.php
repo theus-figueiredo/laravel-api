@@ -19,7 +19,7 @@ class RealStateController extends Controller
 
     public function index()
     {
-        $realState = $this->realState->paginate(10);
+        $realState = $this->realState->paginate('10');
 
         return response()->json($realState, 200);
     }

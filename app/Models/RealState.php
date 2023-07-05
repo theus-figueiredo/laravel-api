@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class RealState extends Model
 {
+
+    protected $table = 'real_state';
+
     use HasFactory;
 
     public function user()
