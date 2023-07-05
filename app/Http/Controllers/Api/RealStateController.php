@@ -29,7 +29,7 @@ class RealStateController extends Controller
 
             $realState = $this->realState->findOrFail($id);
 
-            return response()->json(['data' => $realState]);
+            return response()->json(['data' => $realState], 200);
 
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
