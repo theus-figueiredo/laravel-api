@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RealStateRequest;
 use App\Models\RealState;
@@ -31,7 +32,8 @@ class RealStateController extends Controller
             return response()->json(['data' => $realState]);
 
         } catch (\Exception $e) {
-            return response()->json(['Error' => $e->getMessage()], 401);
+            $message = new ApiMessages($e->getMessage());
+            return response()->json(['Error' => $message->getMessage()], 401);
         }
     }
 
@@ -49,7 +51,8 @@ class RealStateController extends Controller
             ]], 200);
 
         } catch(\Exception $e) {
-            return response()->json(['Error' => $e->getMessage()], 401);
+            $message = new ApiMessages($e->getMessage());
+            return response()->json(['Error' => $message->getMessage()], 401);
         }
     }  
 
@@ -70,7 +73,8 @@ class RealStateController extends Controller
             ], 200);
 
         } catch (\Exception $e) {
-            return response()->json(['Error' => $e->getMessage()], 401);
+            $message = new ApiMessages($e->getMessage());
+            return response()->json(['Error' => $message->getMessage()], 401);
         }
     }
 
@@ -83,7 +87,8 @@ class RealStateController extends Controller
             return response()->json(['data' => ['msg' => 'deletado com sucesso']], 200);
 
         } catch (\Exception $e) {
-            return response()->json(['Error' => $e->getMessage()], 401);
+            $message = new ApiMessages($e->getMessage());
+            return response()->json(['Error' => $message->getMessage()], 401);
         }
     }
 }
