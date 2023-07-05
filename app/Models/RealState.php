@@ -9,6 +9,7 @@ class RealState extends Model
 {
 
     protected $table = 'real_state';
+    protected $fillable = ['user_id', 'title', 'description', 'content', 'price', 'slug', 'bathrooms', 'bedrooms', 'property_area', 'total_area'];
 
     use HasFactory;
 
