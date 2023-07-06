@@ -41,6 +41,11 @@ class UserController extends Controller
 
             $user = $this->user->create($data);
 
+            $user->profile()->create([
+                'phone' => $data['phone'],
+                'mobile_phone' => $data['mobile_phone']
+            ]);
+
             return response()->json(['data' => [
                 'msg' => 'criado com sucesso',
                 'data' => $user

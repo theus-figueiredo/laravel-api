@@ -98,4 +98,18 @@ class CategoryController extends Controller
             return response()->json(['Error' => $message->getMessage()], 401);
         }
     }
+
+
+    public function realState(string $id) {
+        try {
+
+            $category = $this->category->findOrFail($id);
+
+            return response()->json(['data' => $category->realState], 200);
+
+        } catch (\Exception $exception) {
+            $message = new ApiMessages($exception->getMessage());
+            return response()->json(['Error' => $message->getMessage()], 401);
+        }
+    }
 }
