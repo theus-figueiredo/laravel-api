@@ -40,6 +40,7 @@ class RealStateController extends Controller
 
     public function store(RealStateRequest $request) {
         $data = $request->all();
+        $images = $request->file('images');
         
         try{
 
@@ -47,6 +48,18 @@ class RealStateController extends Controller
 
             if(isset($data['categories']) && count($data['categories'])) {
                 $realState->categories()->sync($data['categories']);
+            }
+
+            if($images) {
+
+                $uploadedImages = [];
+
+                foreach ($images as $image) {
+                    $path = $image->store('images', 'public');
+                    $uploadedImages[] = ['photo' => $path, 'is_thumb' => false];
+                }
+
+                $realState->photos()->createMany($uploadedImages);
             }
 
             return response()->json(["data" => [
@@ -58,11 +71,12 @@ class RealStateController extends Controller
             $message = new ApiMessages($e->getMessage());
             return response()->json(['Error' => $message->getMessage()], 401);
         }
-    }  
+    }
 
 
     public function update($id, RealStateRequest $request) {
         $data = $request->all();
+        $images = $request->file('images');
 
         try {
 
@@ -71,6 +85,18 @@ class RealStateController extends Controller
 
             if(isset($data['categories']) && count($data['categories'])) {
                 $realState->categories()->sync($data['categories']);
+            }
+
+            if($images) {
+
+                $uploadedImages = [];
+
+                foreach ($images as $image) {
+                    $path = $image->store('images', 'public');
+                    $uploadedImages[] = ['photo' => $path, 'is_thumb' => false];
+                }
+
+                $realState->photos()->createMany($uploadedImages);
             }
 
             return response()->json([
