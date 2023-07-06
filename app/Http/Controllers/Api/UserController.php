@@ -66,7 +66,8 @@ class UserController extends Controller
     {
         try {
 
-            $user = $this->user->findOrFail($id);
+            $user = $this->user->with('profile')->findOrFail($id);
+            $user->profile->social_networks = unserialize($user->profile->social_networks);
 
             return response()->json(['data' => $user], 200);
 
@@ -88,10 +89,16 @@ class UserController extends Controller
             unset($data['password']);
         }
 
+        Validator::make($data, ['profile.mobile_phone' => 'required']);
+
         try {
+            $profile = $data['profile'];
+            $profile['social_networks'] = serialize($profile['social_networks']);
 
             $user = $this->user->findOrFail($id);
             $user->update($data);
+
+            $user->profile()->update($profile);
 
             return response()->json([
                 'data' => [
