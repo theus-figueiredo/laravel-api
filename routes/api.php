@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\RealStateController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -30,5 +31,10 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api')->group(function() {
 
     Route::name('users.')->group(function() {
         Route::resource('/users', UserController::class); //api/v1/users/
+    });
+
+
+    Route::name('categories.')->group(function() {
+        Route::resource('/categories', CategoryController::class); //api/v1/categories/
     });
 });
