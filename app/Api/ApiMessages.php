@@ -8,7 +8,7 @@ class ApiMessages {
 
     public function __construct(string $message, array $data = []) {
         $this->message['message'] = $message;
-        $this->message['data'] = $data;
+        $this->message['errors'] = $data;
     }
 
     public function getMessage() {

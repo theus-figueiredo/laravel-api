@@ -125,4 +125,11 @@ class RealStateController extends Controller
             return response()->json(['Error' => $message->getMessage()], 401);
         }
     }
+
+
+    public function getUserRealStates() {
+        $realStates = auth('api')->user()->real_state()->paginate('10');
+
+        return response()->json(['data' => $realStates], 200);
+    }
 }
