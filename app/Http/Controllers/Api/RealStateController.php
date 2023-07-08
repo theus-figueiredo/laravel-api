@@ -44,6 +44,8 @@ class RealStateController extends Controller
         
         try{
 
+            $data['user_id'] = auth('api')->user()->id;
+
             $realState = $this->realState->create($data);
 
             if(isset($data['categories']) && count($data['categories'])) {
@@ -80,7 +82,7 @@ class RealStateController extends Controller
 
         try {
 
-            $realState = $this->realState->findOrFail($id);
+            $realState = auth('api')->user()->real_state()->findOrFail($id);
             $realState->update($data);
 
             if(isset($data['categories']) && count($data['categories'])) {
@@ -115,7 +117,7 @@ class RealStateController extends Controller
 
     public function destroy($id) {
         try {
-            $realState = $this->realState->findOrFail($id);
+            $realState = auth('api')->user()->real_state()->findOrFail($id);
             $realState->delete();
 
             return response()->json(['data' => ['msg' => 'deletado com sucesso']], 200);
