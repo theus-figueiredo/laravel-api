@@ -26,29 +26,33 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->namespace('App\Http\Controllers\Api')->group(function() {
 
-    Route::post('/users/login', [LoginJwtController::class, 'login']); //api/v1/users/login/
-    Route::get('/users/logout', [LoginJwtController::class, 'logout']); //api/v1/users/logout/
-    Route::get('/users/refresh', [LoginJwtController::class, 'refresh']); //api/v1/users/refresh/
+    Route::name('real_states.')->prefix('real-states')->group(function() {
+        Route::get('/', [RealStateController::class, 'index']); //api/v1/real-state/
+        Route::get('/{id}', [RealStateController::class, 'show']); //api/v1/real-state/{id}
+        Route::post('/', [RealStateController::class, 'store'])->middleware('jwt.auth'); //api/v1/real-state/
+        Route::put('/{id', [RealStateController::class, 'update'])->middleware('jwt.auth'); //api/v1/real-state/{id}
+        Route::delete('/{id', [RealStateController::class, 'destroy'])->middleware('jwt.auth'); //api/v1/real-state/{id}
+    });
 
-    Route::name('real_states.')->group(function() {
-        Route::resource('/real-state', RealStateController::class); //api/v1/real-state/
+    Route::name('users.')->prefix('users')->group(function() {
+        Route::get('/', [UserController::class, 'index'])->middleware('jwt.auth'); //api/v1/users/
+        Route::post('/', [UserController::class, 'store']); //api/v1/users/
+        Route::put('/{id', [UserController::class, 'update'])->middleware('jwt.auth'); //api/v1/users/{id}
+        Route::delete('/{id', [UserController::class, 'destroy'])->middleware('jwt.auth'); //api/v1/users/{id}
+        Route::post('/login', [LoginJwtController::class, 'login']); //api/v1/users/login/
+        Route::get('/logout', [LoginJwtController::class, 'logout']); //api/v1/users/logout/
+        Route::get('/refresh', [LoginJwtController::class, 'refresh']); //api/v1/users/refresh/
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {
         Route::name('categories.')->group(function() {
-            Route::get('/categories/{id}/real-states', [CategoryController::class, 'realState']);
+            Route::get('/categories/{id}/real-states', [CategoryController::class, 'realState']); //api/v1/categories/{id}/real-states
             Route::resource('/categories', CategoryController::class); //api/v1/categories/
-        });
-    
+        });   
         
         Route::name('photos.')->prefix('photos')->group(function() {
             Route::delete('/{id}', [RealStatePhotoController::class, 'removePhoto'])->name('delete'); //api/v1/photos/{id}/
             Route::put('/set-thumb/{photoId}/{realStateId}', [RealStatePhotoController::class, 'setThumb']);//api/v1/photos/set-thumb/{photoId}/{realStateId}/
-        });
-
-
-        Route::name('users.')->group(function() {
-            Route::resource('/users', UserController::class); //api/v1/users/
         });
 
         Route::get('/user-real-state', [RealStateController::class, 'getUserRealStates']); //api/v1/user-real-state/
