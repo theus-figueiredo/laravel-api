@@ -10,12 +10,26 @@ Projeto feito baseado na ideia de anúncio de aluguel e venda de imóveis.
 
 O projeto possui um docker composer com todas as configurações já preparadas pra uso.
 
-Basta clonar o projeto, entrar na pasta e executar o comando para iniciar os containers
+Para executar o projeto basta seguir os passos abaixo:
+
+1 - clonar o projeto
 
 ```bash
 git clone git@github.com:theus-figueiredo/laravel-api.git
+```
+
+2- entrar na pasta e executar o comando para iniciar os containers
+
+```bash
 cd laravel-api
 vendor/bin/sail up -d
+```
+
+3 - entrar no bash do container onde a aplicação está e executar as migrations
+
+```bash
+vendor/bin/sail exec laravel.test bash
+php artisan migrate
 ```
 
 Não há a necessidade iniciar o servidor pelo PHP artisan, uma vez que os containers forem iniciados o seridor já estará rodando.
