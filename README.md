@@ -76,3 +76,6 @@ Header:
 | :-------- | :------- | :-------------------------------- |
 | `Authorization`| `Bearer token` | **Obrigatório**. Token JWT do usuário logado |
 
+
+
+Opa... esse readme ainda está em desenvolvimento, já já vão ter mais informações
