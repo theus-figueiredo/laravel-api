@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('bedrooms');
             $table->integer('property_area');
             $table->integer('total_area');
-            $table->string('slug');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
