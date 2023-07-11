@@ -36,19 +36,20 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api')->group(function() {
 
     Route::name('users.')->prefix('users')->group(function() {
         Route::get('/', [UserController::class, 'index'])->middleware('jwt.auth'); //api/v1/users/
+        Route::get('/{id}', [UserController::class, 'show'])->middleware('jwt.auth'); //api/v1/users/{id}
         Route::post('/', [UserController::class, 'store']); //api/v1/users/
         Route::put('/{id', [UserController::class, 'update'])->middleware('jwt.auth'); //api/v1/users/{id}
         Route::delete('/{id', [UserController::class, 'destroy'])->middleware('jwt.auth'); //api/v1/users/{id}
         Route::post('/login', [LoginJwtController::class, 'login']); //api/v1/users/login/
-        Route::get('/logout', [LoginJwtController::class, 'logout']); //api/v1/users/logout/
-        Route::get('/refresh', [LoginJwtController::class, 'refresh']); //api/v1/users/refresh/
+        Route::get('/logout', [LoginJwtController::class, 'logout'])->middleware('jwt.auth'); //api/v1/users/logout/
+        Route::get('/refresh', [LoginJwtController::class, 'refresh'])->middleware('jwt.auth'); //api/v1/users/refresh/
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {
         Route::name('categories.')->group(function() {
             Route::get('/categories/{id}/real-states', [CategoryController::class, 'realState']); //api/v1/categories/{id}/real-states
             Route::resource('/categories', CategoryController::class); //api/v1/categories/
-        });   
+        });     
         
         Route::name('photos.')->prefix('photos')->group(function() {
             Route::delete('/{id}', [RealStatePhotoController::class, 'removePhoto'])->name('delete'); //api/v1/photos/{id}/
