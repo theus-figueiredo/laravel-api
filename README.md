@@ -235,6 +235,19 @@ Header:
 | `Authorization`| `Bearer token` | **Obrigatório**. Token JWT do usuário logado |
 
 
+## Resgatar os imóveis postados por um usuário:
+
+```http
+    GET http://localhost:8787/api/v1/user-real-state
+```
+
+Header:
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `Authorization`| `Bearer token` | **Obrigatório**. Token JWT do usuário logado |
+
+
 ### Login:
 
 Retorna o token de autenticação JWT do usuário
@@ -382,3 +395,4 @@ Todos os endpoints dentro de fotos requerem o envio do token JWT no Header:
 | :------------ | :------- | :-------------------------------- |
 | `photoId`     | `string` | **Obrigatório**. Id da foto       |
 | `realStateId` | `string` | **Obrigatório**. Id do imóvel     |
+
