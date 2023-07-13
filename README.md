@@ -193,9 +193,9 @@ Corpo da requisição:
 | `name`      | `string` | **Obrigatório**. Nome do usuário |
 | `email`     | `string` | **Obrigatório**. Email do usuário|
 | `password`  | `string` | **Obrigatório**. senha           |
-| `profile[mobile_phone]` | `array[string]` | **Obrigatório**. celular |
-| `profile[about]`| `array[string]` | Sobre |
-| `profile[social_networks][]` | `array` | Redes sociais |
+| `profile[mobile_phone]` | `string` | **Obrigatório**. celular |
+| `profile[about]`| `string` | Sobre |
+| `profile[social_networks][]` | `string` | Redes sociais |
 
 
 
