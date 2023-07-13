@@ -217,6 +217,17 @@ Header:
 | `Authorization`| `Bearer token` | **Obrigatório**. Token JWT do usuário logado |
 
 
+Corpo da requisição:
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | Nome do usuário |
+| `email`     | `string` | Email do usuário|
+| `password`  | `string` | senha           |
+| `profile[mobile_phone]` | `string` | celular |
+| `profile[about]`| `string` | Sobre |
+| `profile[social_networks][]` | `string` | Redes sociais |
+
 ### Deletar usuário:
 
 ```http
