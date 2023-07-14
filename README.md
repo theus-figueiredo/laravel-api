@@ -8,7 +8,7 @@ Projeto feito baseado na ideia de anúncio de aluguel e venda de imóveis.
 
 ## Instalação:
 
-O projeto possui um docker composer com todas as configurações já preparadas pra uso.
+_Necessário ter o docker instalado para seguir o passo a passa abaixo_
 
 Para executar o projeto basta seguir os passos abaixo:
 
@@ -22,28 +22,33 @@ git clone git@github.com:theus-figueiredo/laravel-api.git
 
 ```bash
 cd laravel-api
-vendor/bin/sail up -d
+docker-compose up -d
 ```
 
 3 - entrar no bash do container onde a aplicação está e executar as migrations
 
 ```bash
-vendor/bin/sail exec laravel.test bash
-php artisan migrate
+docker-compose exec laravel.test php artisan migrate
 ```
 
 Não há a necessidade iniciar o servidor pelo PHP artisan, uma vez que os containers forem iniciados o seridor já estará rodando.
 
-No projeto há um arquivo exemplo de um .env, você pode usa-lo como base para criar um .env no projeto e alterar as informações conforme queira mudar algo no mesmo.
+## Variáveis de ambiente
 
-## Sobre as portas dos containers:
+Para executar o projeto é preciso adicionar algumas variais de ambiente:
 
-A aplicação está sendo redirecionado para a porta local: 8787
+`APP_PORT` -> irá definir a porta local em que a aplicação será executada
 
-O MySQL está sendo redirecionado para a porta local: 3358
+`FORWARD_DB_PORT` -> irá definir a porta local para qual será mapeado o container com o mysql
 
-caso você possua alguma aplicação local sendo executada em alguma desas portas, você pode alterar as mesmas no arquivo .env do projeto, ou diretamente no arquivo do docker-compose
-# Rotas da API
+`JWT_SECRET` -> para fazer uso das funções do JWT
+
+`APP_KEY` -> para armazenar a chave de criptografia usada para proteger os dados sensíveis do aplicativo
+
+
+o username e senha do mysql no container em questão são respectivamente `sail` e `password`
+
+No projeto há um arquivo .env.example com um exemplo do arquivo .env, use-o como base.
 
 ## Endpoint de imóveis:
 
