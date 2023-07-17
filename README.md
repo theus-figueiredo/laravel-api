@@ -116,14 +116,14 @@ Corpo da requisição:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `title`      | `string` | **Obrigatório**. título do anúncio |
-| `description`      | `string` | **Obrigatório**. descrição do anúncio|
-| `price`      | `float` | **Obrigatório**. valor do imóvel |
-| `bathrooms`      | `int` | **Obrigatório**. quantidade de banheiros |
-| `bedrooms`| `int` | **Obrigatório**. quantidade de quartos |
-| `property_area` | `int` | **Obrigatório**. área do imóvel |
-| `total_area` | `int` | **Obrigatório**. área do terreno |
-| `categories[]` | `int` | **Obrigatório**. id da categora do anúncio |
+| `title`      | `string` | título do anúncio |
+| `description`      | `string` | descrição do anúncio|
+| `price`      | `float` |  valor do imóvel |
+| `bathrooms`      | `int` |  quantidade de banheiros |
+| `bedrooms`| `int` |  quantidade de quartos |
+| `property_area` | `int` |  área do imóvel |
+| `total_area` | `int` |  área do terreno |
+| `categories[]` | `int` |  id da categora do anúncio |
 | `images[]` | `file` |  Foto |
 
 
