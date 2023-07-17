@@ -15,13 +15,13 @@ Para executar o projeto basta seguir os passos abaixo:
 1 - clonar o projeto
 
 ```bash
-git clone git@github.com:theus-figueiredo/laravel-api.git
+git clone git@github.com:theus-figueiredo/real-state-api.git
 ```
 
 2- entrar na pasta e executar o comando para iniciar os containers
 
 ```bash
-cd laravel-api
+cd real-state-api
 docker-compose up -d
 ```
 
