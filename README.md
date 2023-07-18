@@ -43,7 +43,7 @@ Para executar o projeto é preciso adicionar algumas variais de ambiente:
 
 `JWT_SECRET` -> para fazer uso das funções do JWT
 
-`APP_KEY` -> para armazenar a chave de criptografia usada para proteger os dados sensíveis do aplicativo
+`APP_KEY` -> para armazenar a chave de criptografia usada para proteger os dados sensíveis do aplicativo (pode ser gerada com o comando: `docker-compose exec laravel.test php artisan key:generate`)
 
 
 o username e senha do mysql no container em questão são respectivamente `sail` e `password`
