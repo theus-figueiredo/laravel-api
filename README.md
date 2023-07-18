@@ -55,7 +55,7 @@ No projeto há um arquivo .env.example com um exemplo do arquivo .env, use-o com
 #### Adicionar um novo imóvel:
 
 ```http
-  POST http://localhost:8787/api/v1/real-state/
+  POST api/v1/real-state/
 ```
 Corpo da requisição:
 
@@ -82,7 +82,7 @@ Header:
 #### Recuperar todos os imóveis
 
 ```http
-  GET http://localhost:8787/api/v1/real-state/
+  GET api/v1/real-state/
 ```
 
 ---------------------------------------------------------
@@ -90,7 +90,7 @@ Header:
 #### Recuperar imóvel por id
 
 ```http
-  GET http://localhost:8787/api/v1/real-state/{id}
+  GET /api/v1/real-state/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -105,7 +105,7 @@ Header:
 
 
 ```http
-  PUT http://localhost:8787/api/v1/real-state/{id}
+  PUT api/v1/real-state/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -138,7 +138,7 @@ Header:
 ### Deletar um Imóvel
 
 ```http
-  PUT http://localhost:8787/api/v1/real-state/{id}
+  PUT api/v1/real-state/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -157,7 +157,7 @@ Header:
 ### Resgatar usuários:
 
 ```http
-  GET http://localhost:8787/api/v1/users/
+  GET api/v1/users/
 ```
 
 Header:
@@ -171,7 +171,7 @@ Header:
 
 
 ```http
-  GET http://localhost:8787/api/v1/users/{id}
+  GET api/v1/users/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -188,7 +188,7 @@ Header:
 ### Criar um novo usuário:
 
 ```http
-  POST http://localhost:8787/api/v1/users/
+  POST /api/v1/users/
 ```
 
 Corpo da requisição:
@@ -207,7 +207,7 @@ Corpo da requisição:
 ### Atualizar um usuário:
 
 ```http
-  PUT http://localhost:8787/api/v1/users/{id}
+  PUT /api/v1/users/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -236,7 +236,7 @@ Corpo da requisição:
 ### Deletar usuário:
 
 ```http
-    DELETE http://localhost:8787/api/v1/users/{id}
+    DELETE /api/v1/users/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -254,7 +254,7 @@ Header:
 ## Resgatar os imóveis postados por um usuário:
 
 ```http
-    GET http://localhost:8787/api/v1/user-real-state
+    GET /api/v1/user-real-state
 ```
 
 Header:
@@ -269,7 +269,7 @@ Header:
 Retorna o token de autenticação JWT do usuário
 
 ```http
-    POST http://localhost:8787/api/v1/users/login
+    POST /api/v1/users/login
 ```
 
 | Parameter | Type     | Description                       |
@@ -283,7 +283,7 @@ Retorna o token de autenticação JWT do usuário
 Invalida o token JWT do usuário.
 
 ```http
-    GET http://localhost:8787/api/v1/users/logout
+    GET /api/v1/users/logout
 ```
 
 Header:
@@ -298,7 +298,7 @@ Header:
 Atualiza o Token JWT do usuário.
 
 ```http
-    GET http://localhost:8787/api/v1/users/refresh
+    GET /api/v1/users/refresh
 ```
 
 Header:
@@ -319,20 +319,20 @@ Todos os endpoints dentro de categorias requerem o envio do token JWT no Header:
 ## Resgatar categorias:
 
 ```http
-    GET http://localhost:8787/api/v1/categories/
+    GET /api/v1/categories/
 ```
 
 
 ## Resgatar categorias por id:
 
 ```http
-    GET http://localhost:8787/api/v1/categories/{id}
+    GET /api/v1/categories/{id}
 ```
 
 ## Adicionar uma categoria:
 
 ```http
-    POST http://localhost:8787/api/v1/categories/
+    POST /api/v1/categories/
 ```
 
 Corpo da requisição:
@@ -345,7 +345,7 @@ Corpo da requisição:
 ## Atualizar uma categoria:
 
 ```http
-    PUT http://localhost:8787/api/v1/categories/{id}
+    PUT /api/v1/categories/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -363,7 +363,7 @@ Corpo da requisição:
 ## Deletar uma categoria:
 
 ```http
-    DELETE http://localhost:8787/api/v1/categories/{id}
+    DELETE /api/v1/categories/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -374,7 +374,7 @@ Corpo da requisição:
 ## Resgatar imóveis que fazer parte de uma categoria:
 
 ```http
-    GET http://localhost:8787/api/v1/categories/{id}/real-states
+    GET /api/v1/categories/{id}/real-states
 ```
 
 | Parameter | Type     | Description                       |
@@ -393,7 +393,7 @@ Todos os endpoints dentro de fotos requerem o envio do token JWT no Header:
 ## Deletar uma foto:
 
 ```http
-    DELETE http://localhost:8787/api/v1/photos/{id}
+    DELETE /api/v1/photos/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -404,7 +404,7 @@ Todos os endpoints dentro de fotos requerem o envio do token JWT no Header:
 ## Definir uma imagem como thumbnail:
 
 ```http
-    PUT http://localhost:8787/api/v1/photos/set-thumb/{photoId}/{realStateId}
+    PUT /api/v1/photos/set-thumb/{photoId}/{realStateId}
 ```
 
 | Parameter     | Type     | Description                       |
