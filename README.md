@@ -41,7 +41,7 @@ Para executar o projeto é preciso adicionar algumas variais de ambiente:
 
 `FORWARD_DB_PORT` -> irá definir a porta local para qual será mapeado o container com o mysql
 
-`JWT_SECRET` -> para fazer uso das funções do JWT
+`JWT_SECRET` -> para fazer uso das funções do JWT (pode ser gerada com o comando: `docker-compose exec laravel.test php artisan jwt:secret`)
 
 `APP_KEY` -> para armazenar a chave de criptografia usada para proteger os dados sensíveis do aplicativo (pode ser gerada com o comando: `docker-compose exec laravel.test php artisan key:generate`)
 
