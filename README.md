@@ -48,12 +48,12 @@ Para executar o projeto é preciso adicionar algumas variais de ambiente:
 
 `JWT_SECRET` -> para fazer uso das funções do JWT. Pode ser gerada com o comando abaixo: 
 ```bash 
-docker-compose exec laravel.test php artisan jwt:secret
+vendor/bin/sail exec laravel.test php artisan jwt:secret
 ```
 
 `APP_KEY` -> para armazenar a chave de criptografia usada para proteger os dados sensíveis do aplicativo pode ser gerada com o comando abaixo: 
 ```bash
-docker-compose exec laravel.test php artisan key:generate
+vendor/bin/sail exec laravel.test php artisan key:generate
 ```
 
 
