@@ -33,7 +33,7 @@ vendor/bin/sail up -d
 3 - entrar no bash do container onde a aplicação está e executar as migrations
 
 ```bash
-vendor/bin/sail exec laravel.test php artisan migrate
+vendor/bin/sail exec app php artisan migrate
 ```
 
 Não há a necessidade iniciar o servidor pelo PHP artisan, uma vez que os containers forem iniciados o seridor já estará rodando.
