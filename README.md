@@ -18,17 +18,22 @@ Para executar o projeto basta seguir os passos abaixo:
 git clone git@github.com:theus-figueiredo/real-state-api.git
 ```
 
-2- entrar na pasta e executar o comando para iniciar os containers
+2- entrar na pasta e instalar as dependências:
 
 ```bash
 cd real-state-api
-docker-compose up -d
+composer install
+```
+
+4- Criar e rodar os containers:
+```bash
+vendor/bin/sail up -d
 ```
 
 3 - entrar no bash do container onde a aplicação está e executar as migrations
 
 ```bash
-docker-compose exec laravel.test php artisan migrate
+vendor/bin/sail exec laravel.test php artisan migrate
 ```
 
 Não há a necessidade iniciar o servidor pelo PHP artisan, uma vez que os containers forem iniciados o seridor já estará rodando.
