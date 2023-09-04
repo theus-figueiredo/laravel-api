@@ -22,10 +22,12 @@ git clone git@github.com:theus-figueiredo/real-state-api.git
 
 ```bash
 cd real-state-api
-composer install
+docker-compose up -d
+docker-compose exec app composer install
+docker-compose stop
 ```
 
-4- Criar e rodar os containers:
+4- Rodar os containers com o sail:
 ```bash
 vendor/bin/sail up -d
 ```
